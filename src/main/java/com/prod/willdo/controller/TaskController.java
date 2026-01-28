@@ -5,6 +5,8 @@ import com.prod.willdo.service.TaskService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import jakarta.validation.Valid;
+
 
 @RestController
 @RequestMapping("/tasks")
@@ -17,7 +19,7 @@ public class TaskController {
     }
 
     @PostMapping
-    public TaskDto createTask(@RequestBody TaskDto taskDto) {
+    public TaskDto createTask(@RequestBody @Valid TaskDto taskDto) {
         return service.createTask(taskDto);
     }
 
