@@ -2,7 +2,7 @@ package com.prod.willdo.service;
 
 import com.prod.willdo.dto.TaskDto;
 import com.prod.willdo.mapper.TaskMapper;
-import com.prod.willdo.model.Task;
+import com.prod.willdo.model.TaskOld;
 import com.prod.willdo.repository.TaskRepository;
 import org.springframework.stereotype.Service;
 import com.prod.willdo.exception.TaskNotFoundException;
@@ -23,11 +23,11 @@ public class TaskService {
 
     public TaskDto createTask(TaskDto taskDto) {
         // Convert DTO -> Entity
-        Task task = mapper.toEntity(taskDto);
+        TaskOld taskOld = mapper.toEntity(taskDto);
         // Save Entity
-        Task savedTask = repository.save(task);
+        TaskOld savedTaskOld = repository.save(taskOld);
         // Convert Saved Entity -> DTO
-        return mapper.toDto(savedTask);
+        return mapper.toDto(savedTaskOld);
     }
 
     public List<TaskDto> getAllTasks() {

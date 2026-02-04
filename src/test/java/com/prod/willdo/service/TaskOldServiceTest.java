@@ -2,7 +2,7 @@ package com.prod.willdo.service;
 
 import com.prod.willdo.dto.TaskDto;
 import com.prod.willdo.mapper.TaskMapper;
-import com.prod.willdo.model.Task;
+import com.prod.willdo.model.TaskOld;
 import com.prod.willdo.repository.TaskRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,7 +15,7 @@ import static org.mockito.Mockito.when;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(MockitoExtension.class) // Enables Mockito support
-class TaskServiceTest {
+class TaskOldServiceTest {
 
     @Mock
     private TaskRepository repository; // Creates a "fake" repository
@@ -30,10 +30,10 @@ class TaskServiceTest {
     void shouldCreateTaskSuccessfully() {
         // 1. Prepare Data
         TaskDto inputDto = new TaskDto(null, "Buy Milk", false);
-        Task entity = new Task();
+        TaskOld entity = new TaskOld();
         entity.setDescription("Buy Milk");
 
-        Task savedEntity = new Task();
+        TaskOld savedEntity = new TaskOld();
         savedEntity.setId(1L); // The DB would usually generate this
         savedEntity.setDescription("Buy Milk");
 
@@ -43,7 +43,7 @@ class TaskServiceTest {
         // When the service calls mapper.toEntity, return our entity object
         when(mapper.toEntity(inputDto)).thenReturn(entity);
         // When the service calls repository.save, return our savedEntity object
-        when(repository.save(any(Task.class))).thenReturn(savedEntity);
+        when(repository.save(any(TaskOld.class))).thenReturn(savedEntity);
         // When the service calls mapper.toDto, return the result DTO
         when(mapper.toDto(savedEntity)).thenReturn(expectedResult);
 

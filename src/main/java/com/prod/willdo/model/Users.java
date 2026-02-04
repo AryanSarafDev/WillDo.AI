@@ -5,47 +5,47 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
+import java.time.LocalDateTime;
+
 @Entity
 public class Users {
-  @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private String id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private String id;
 
-  private String username;
+    private String username;
+    private String passwordHash;
+    private LocalDateTime createdAt;
 
-  public String getId() {
-    return id;
-  }
+    public String getId() {
+        return id;
+    }
 
-  public String getUsername() {
-    return username;
-  }
+    public void setId(String id) {
+        this.id = id;
+    }
 
-  public void setUsername(String username) {
-    this.username = username;
-  }
+    public String getUsername() {
+        return username;
+    }
 
-  public String getPasswordHash() {
-    return passwordHash;
-  }
+    public void setUsername(String username) {
+        this.username = username;
+    }
 
-  public void setPasswordHash(String passwordHash) {
-    this.passwordHash = passwordHash;
-  }
+    public String getPasswordHash() {
+        return passwordHash;
+    }
 
-  public String getCreatedAt() {
-    return createdAt;
-  }
+    public void setPasswordHash(String passwordHash) {
+        this.passwordHash = passwordHash;
+    }
 
-  public void setCreatedAt(String createdAt) {
-    this.createdAt = createdAt;
-  }
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 
-  public void setId(String id) {
-    this.id = id;
-  }
-
-  private String passwordHash;
-
-  private String createdAt;
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }
