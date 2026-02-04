@@ -12,12 +12,15 @@ public class Task {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id",nullable = false)
+    @JoinColumn(name = "category_id", nullable = false)
     private Category category;
 
     private String title;
 
     private String description;
+    private boolean isCompleted;
+    private LocalDateTime dueDate;
+    private Long estimatedMinutes;
 
     public Long getId() {
         return id;
@@ -74,12 +77,6 @@ public class Task {
     public void setEstimatedMinutes(Long estimatedMinutes) {
         this.estimatedMinutes = estimatedMinutes;
     }
-
-    private boolean isCompleted;
-
-    private LocalDateTime dueDate;
-
-    private Long estimatedMinutes;
 
 
 }
